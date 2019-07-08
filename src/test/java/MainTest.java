@@ -1,9 +1,5 @@
 import com.company.pages.*;
 import com.company.utils.TestHelper;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -21,7 +17,7 @@ public class MainTest extends BaseTest {
     }
 
     @Test
-    public void checkValidationText() throws InterruptedException {
+    public void checkValidationText() {
         mainPage.openMainPage();
         loginPage = mainPage.clickSignInButton();
         loginPage.enterEmailForRegistration("qwe123@mail.ru");
@@ -34,15 +30,17 @@ public class MainTest extends BaseTest {
     }
 
     @Test
-    public void deleteGoodsFromCart() throws InterruptedException {
+    public void deleteGoodsFromCart() {
         searchResultPage = mainPage.openMainPage().fillSearchingField("Blouse").search();
         searchResultPage.switchItemsToList();
         searchResultPage.clickAddToCartButton();
         shopCartPage = searchResultPage.clickProccedToCheckoutButton();
         shopCartPage.increaseItemCount();
+        TestHelper.waitWhileAttributChangeValue(driver, shopCartPage.getItemCounter(), "value", "2", 5);
+        Assert.assertEquals(shopCartPage.getTotalPrice().getText(), "$56.00");
         /*
-        Тут надо нахуярить ассертов
-        */
+            Add asserts here
+         */
         shopCartPage.deleteFromCart();
         TestHelper.waitForElement(driver, shopCartPage.getEmptyCartAllert(), 5);
         Assert.assertTrue(shopCartPage.getEmptyCartAllert().isDisplayed());

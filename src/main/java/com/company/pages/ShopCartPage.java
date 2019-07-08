@@ -25,6 +25,36 @@ public class ShopCartPage extends Page {
     private WebElement deleteItemButton;
     @FindBy(css = "p.alert.alert-warning")
     private WebElement emptyCartAllert;
+    @FindBy(xpath = "//input[@name='quantity_2_7_0_0_hidden' and @value='2']")
+    private WebElement itemCounter;
+
+    public WebElement getItemCounter() {
+        return itemCounter;
+    }
+
+    public WebElement getTotalProductPrice() {
+        return totalProductPrice;
+    }
+
+    public WebElement getTotalProducts() {
+        return totalProducts;
+    }
+
+    public WebElement getTotalShipping() {
+        return totalShipping;
+    }
+
+    public WebElement getTotalPriceWithoutTax() {
+        return totalPriceWithoutTax;
+    }
+
+    public WebElement getTax() {
+        return tax;
+    }
+
+    public WebElement getTotalPrice() {
+        return totalPrice;
+    }
 
     public ShopCartPage(WebDriver driver) {
         this.driver = driver;
