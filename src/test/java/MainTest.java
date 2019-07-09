@@ -37,10 +37,12 @@ public class MainTest extends BaseTest {
         shopCartPage = searchResultPage.clickProccedToCheckoutButton();
         shopCartPage.increaseItemCount();
         TestHelper.waitWhileAttributChangeValue(driver, shopCartPage.getItemCounter(), "value", "2", 5);
+        Assert.assertEquals(shopCartPage.getTotalProductPrice().getText(), "$54.00");
+        Assert.assertEquals(shopCartPage.getTotalProducts().getText(), "$54.00");
+        Assert.assertEquals(shopCartPage.getTotalShipping().getText(), "$2.00");
+        Assert.assertEquals(shopCartPage.getTotalPriceWithoutTax().getText(), "$56.00");
+        Assert.assertEquals(shopCartPage.getTax().getText(), "$0.00");
         Assert.assertEquals(shopCartPage.getTotalPrice().getText(), "$56.00");
-        /*
-            Add asserts here
-         */
         shopCartPage.deleteFromCart();
         TestHelper.waitForElement(driver, shopCartPage.getEmptyCartAllert(), 5);
         Assert.assertTrue(shopCartPage.getEmptyCartAllert().isDisplayed());
