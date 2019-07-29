@@ -1,3 +1,5 @@
+package selenium;
+
 import com.company.webdriver.factory.DriverType;
 import com.company.webdriver.factory.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
