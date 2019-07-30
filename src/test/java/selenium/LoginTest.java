@@ -22,10 +22,8 @@ public class LoginTest extends BaseTest{
         mainPage.openMainPage();
         loginPage = mainPage.clickSignInButton();
         loginPage.fillLoginEmailField(login).fillpasswordField(pass);
-        Thread.sleep(3000);
         loginPage.clickSignInButton();
         Assert.assertEquals(loginPage.getAllertMessage().getText(), allertText);
-        Thread.sleep(2000);
     }
 
     @DataProvider
