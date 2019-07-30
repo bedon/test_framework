@@ -3,6 +3,7 @@ package selenium;
 import com.company.pages.*;
 import com.company.utils.TestHelper;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -106,5 +107,10 @@ public class MainTest extends BaseTest {
         shopCartPage.increaseItemCount();
         TestHelper.waitWhileAttributChangeValue(driver, shopCartPage.getItemCounter(), "value", "2", 5);
         Assert.assertEquals(shopCartPage.getTotalPriceWithoutTax().getText(), "$56.00");
+    }
+
+    @AfterMethod
+    public void down() {
+        driver.manage().deleteAllCookies();
     }
 }
