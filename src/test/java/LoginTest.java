@@ -1,5 +1,3 @@
-package selenium;
-
 import com.company.pages.LoginPage;
 import com.company.pages.MainPage;
 import org.testng.Assert;
@@ -18,7 +16,7 @@ public class LoginTest extends BaseTest{
     }
 
     @Test(dataProvider = "invalidLoginData")
-    public void negativeLoginDataTest(String login, String pass, String allertText) throws InterruptedException {
+    public void negativeLoginDataTest(String login, String pass, String allertText) {
         mainPage.openMainPage();
         loginPage = mainPage.clickSignInButton();
         loginPage.fillLoginEmailField(login).fillpasswordField(pass);

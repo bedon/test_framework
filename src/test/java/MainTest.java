@@ -1,5 +1,3 @@
-package selenium;
-
 import com.company.pages.*;
 import com.company.utils.TestHelper;
 import org.testng.Assert;
@@ -34,12 +32,7 @@ public class MainTest extends BaseTest {
 
     @Test
     public void validateTotalProductPriseChanged() {
-        searchResultPage = mainPage.openMainPage().fillSearchingField("Blouse").search();
-        searchResultPage.switchItemsToList();
-        searchResultPage.clickAddToCartButton();
-        shopCartPage = searchResultPage.clickProccedToCheckoutButton();
-        shopCartPage.increaseItemCount();
-        TestHelper.waitWhileAttributChangeValue(driver, shopCartPage.getItemCounter(), "value", "2", 5);
+        increaseItemCountAndWait();
         Assert.assertEquals(shopCartPage.getTotalProductPrice().getText(), "$54.00");
     }
 
@@ -56,61 +49,47 @@ public class MainTest extends BaseTest {
 
     @Test
     public void validateTotalPiceCorrectValue() {
-        searchResultPage = mainPage.openMainPage().fillSearchingField("Blouse").search();
-        searchResultPage.switchItemsToList();
-        searchResultPage.clickAddToCartButton();
-        shopCartPage = searchResultPage.clickProccedToCheckoutButton();
-        shopCartPage.increaseItemCount();
-        TestHelper.waitWhileAttributChangeValue(driver, shopCartPage.getItemCounter(), "value", "2", 5);
+        increaseItemCountAndWait();
         Assert.assertEquals(shopCartPage.getTotalPrice().getText(), "$56.00");
     }
 
     @Test
     public void validateCorrectTax() {
-        searchResultPage = mainPage.openMainPage().fillSearchingField("Blouse").search();
-        searchResultPage.switchItemsToList();
-        searchResultPage.clickAddToCartButton();
-        shopCartPage = searchResultPage.clickProccedToCheckoutButton();
-        shopCartPage.increaseItemCount();
-        TestHelper.waitWhileAttributChangeValue(driver, shopCartPage.getItemCounter(), "value", "2", 5);
+        increaseItemCountAndWait();
         Assert.assertEquals(shopCartPage.getTax().getText(), "$0.00");
     }
 
     @Test
     public void validateTotalProductChanged() {
-        searchResultPage = mainPage.openMainPage().fillSearchingField("Blouse").search();
-        searchResultPage.switchItemsToList();
-        searchResultPage.clickAddToCartButton();
-        shopCartPage = searchResultPage.clickProccedToCheckoutButton();
-        shopCartPage.increaseItemCount();
-        TestHelper.waitWhileAttributChangeValue(driver, shopCartPage.getItemCounter(), "value", "2", 5);
+        increaseItemCountAndWait();
         Assert.assertEquals(shopCartPage.getTotalProducts().getText(), "$54.00");
     }
 
     @Test
     public void validateTotalShippingChanged() {
-        searchResultPage = mainPage.openMainPage().fillSearchingField("Blouse").search();
-        searchResultPage.switchItemsToList();
-        searchResultPage.clickAddToCartButton();
-        shopCartPage = searchResultPage.clickProccedToCheckoutButton();
-        shopCartPage.increaseItemCount();
-        TestHelper.waitWhileAttributChangeValue(driver, shopCartPage.getItemCounter(), "value", "2", 5);
+        increaseItemCountAndWait();
         Assert.assertEquals(shopCartPage.getTotalShipping().getText(), "$2.00");
     }
 
+
+
     @Test
     public void validateTotalPriceWithoutTaxChanged() {
-        searchResultPage = mainPage.openMainPage().fillSearchingField("Blouse").search();
-        searchResultPage.switchItemsToList();
-        searchResultPage.clickAddToCartButton();
-        shopCartPage = searchResultPage.clickProccedToCheckoutButton();
-        shopCartPage.increaseItemCount();
-        TestHelper.waitWhileAttributChangeValue(driver, shopCartPage.getItemCounter(), "value", "2", 5);
+        increaseItemCountAndWait();
         Assert.assertEquals(shopCartPage.getTotalPriceWithoutTax().getText(), "$56.00");
     }
 
     @AfterMethod
     public void down() {
         driver.manage().deleteAllCookies();
+    }
+
+    private void increaseItemCountAndWait() {
+        searchResultPage = mainPage.openMainPage().fillSearchingField("Blouse").search();
+        searchResultPage.switchItemsToList();
+        searchResultPage.clickAddToCartButton();
+        shopCartPage = searchResultPage.clickProccedToCheckoutButton();
+        shopCartPage.increaseItemCount();
+        TestHelper.waitWhileAttributChangeValue(driver, shopCartPage.getItemCounter(), "value", "2", 5);
     }
 }
