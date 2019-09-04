@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class MainPage extends Page {
 
-    private Properties config = Config.loadProperty("E:\\idea_projects\\aqa_selenium_course\\src\\main\\resources\\test.properties");
+    private Properties config = Config.loadProperty("src\\main\\resources\\test.properties");
 
     @FindBy(xpath = "//a[@class='login']")
     private WebElement signInButton;

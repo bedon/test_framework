@@ -3,7 +3,7 @@
 <suite name="TestAll">
     <test name="order">
         <classes>
-            <class name="LoginTest" />
+            <class name="selenium.LoginTest" />
         </classes>
     </test>
 </suite>

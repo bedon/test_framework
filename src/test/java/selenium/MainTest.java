@@ -1,3 +1,5 @@
+package selenium;
+
 import com.company.pages.*;
 import com.company.utils.TestHelper;
 import org.testng.Assert;
@@ -70,7 +72,6 @@ public class MainTest extends BaseTest {
         increaseItemCountAndWait();
         Assert.assertEquals(shopCartPage.getTotalShipping().getText(), "$2.00");
     }
-
 
 
     @Test

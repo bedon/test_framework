@@ -3,7 +3,7 @@
 <suite name="TestAll">
     <test name="order">
         <classes>
-            <class name="MainTest" >
+            <class name="selenium.MainTest" >
                 <methods>
                     <include name="checkValidationText"/>
                     <include name="validateTotalProductPriseChanged"/>

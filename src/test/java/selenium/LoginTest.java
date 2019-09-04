@@ -1,3 +1,5 @@
+package selenium;
+
 import com.company.pages.LoginPage;
 import com.company.pages.MainPage;
 import org.testng.Assert;
@@ -13,6 +15,12 @@ public class LoginTest extends BaseTest{
     @BeforeMethod
     public void setupMainPage() {
         mainPage = new MainPage(driver);
+    }
+
+    @Test
+    public void successLoginTest() {
+        mainPage.openMainPage();
+        loginPage = mainPage.clickSignInButton();
     }
 
     @Test(dataProvider = "invalidLoginData")
