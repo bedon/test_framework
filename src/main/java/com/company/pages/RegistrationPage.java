@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class RegistrationPage extends Page {
 
@@ -29,6 +30,10 @@ public class RegistrationPage extends Page {
     private WebElement registerButton;
     @FindBy(css = "div.alert.alert-danger p")
     private WebElement alertMessage;
+    @FindBy(css = "input#postcode")
+    private WebElement postCodeField;
+    @FindBy(css = "select#id_state")
+    private WebElement state;
 
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
@@ -37,7 +42,7 @@ public class RegistrationPage extends Page {
 
     public void fillRequiredFields(String personalFirstName, String personalLastName, String pass,
                                    String addressFirstName, String addressLastName, String address,
-                                   String city, String phone, String addressAlias) {
+                                   String city, String phone, String addressAlias, String postcode) {
         personalFirstNameField.sendKeys(personalFirstName);
         personalLastNameField.sendKeys(personalLastName);
         passwordField.sendKeys(pass);
@@ -48,13 +53,21 @@ public class RegistrationPage extends Page {
         phoneNumberField.sendKeys(phone);
         addressAliasField.clear();
         addressAliasField.sendKeys(addressAlias);
+        postCodeField.sendKeys(postcode);
+        selectState(1);
+    }
+
+    public void selectState(int stateIndex) {
+        Select stateSelect = new Select(state);
+        stateSelect.selectByIndex(stateIndex);
     }
 
     public String getValidationAlertText() {
         return alertMessage.getText();
     }
-    public void clickRegisterButton() {
+    public AccountPage clickRegisterButton() {
         registerButton.click();
+        return new AccountPage(driver);
     }
 
 }

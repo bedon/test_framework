@@ -27,7 +27,7 @@ public class MainTest extends BaseTest {
         registrationPage = loginPage.clickCreateAnAccountButton();
         registrationPage.fillRequiredFields("First", "last", "qwe123qwe",
                 "Homer", "Simpson", "Navoi Alishera 100", "Herson",
-                "+380931002030", "Address alias");
+                "+380931002030", "Address alias", "00000");
         registrationPage.clickRegisterButton();
         Assert.assertEquals(registrationPage.getValidationAlertText(), "There are 2 errors");
     }
