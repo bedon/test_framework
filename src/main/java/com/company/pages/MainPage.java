@@ -45,4 +45,8 @@ public class MainPage extends Page {
         signInButton.click();
         return new LoginPage(driver);
     }
+
+    public WebElement getSearchField() {
+        return searchField;
+    }
 }
