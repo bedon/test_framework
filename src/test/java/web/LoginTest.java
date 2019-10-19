@@ -1,4 +1,4 @@
-package selenium;
+package web;
 
 import com.company.pages.LoginPage;
 import com.company.pages.MainPage;

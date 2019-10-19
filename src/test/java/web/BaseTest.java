@@ -1,4 +1,4 @@
-package selenium;
+package web;
 
 import com.company.webdriver.factory.DriverType;
 import com.company.webdriver.factory.WebDriverFactory;

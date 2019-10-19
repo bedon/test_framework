@@ -1,4 +1,4 @@
-package selenium;
+package web;
 
 import com.company.pages.*;
 import com.company.utils.TestHelper;
