@@ -20,7 +20,7 @@ public class MobileTest {
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", properties.getProperty("chromeDriverPath"));
         Map<String, String> mobileEmulation = new HashMap<String, String>();
-        mobileEmulation.put("deviceName", "iPhone 6/7/8");
+        mobileEmulation.put("deviceName", "iPhone X");
 
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
@@ -31,7 +31,7 @@ public class MobileTest {
     @Test
     public void mobTest() throws InterruptedException {
         driver.get(properties.getProperty("baseUrl"));
-        Thread.sleep(5000);
+        Thread.sleep(3000);
     }
 
     @AfterMethod

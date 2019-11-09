@@ -1,6 +1,7 @@
 package web;
 
 import com.company.pages.*;
+import static com.company.utils.Randomizer.generateRandomMail;
 import com.company.utils.TestHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -34,7 +35,7 @@ public class MainTest extends BaseTest {
     public void checkValidationText() {
         mainPage.openMainPage();
         loginPage = mainPage.clickSignInButton();
-        loginPage.enterEmailForRegistration("qwe123@mail.ru");
+        loginPage.enterEmailForRegistration(generateRandomMail(5));
         registrationPage = loginPage.clickCreateAnAccountButton();
         registrationPage.fillRequiredFields("First", "last", "qwe123qwe",
                 "Homer", "Simpson", "Navoi Alishera 100", "Herson",
